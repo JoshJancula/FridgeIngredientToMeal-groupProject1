@@ -1,0 +1,31 @@
+{
+  "name": "fridge-2-meal",
+  "version": "1.0.0",
+  "description": "Fridge 2 Plate is an easy to use web app that runs on the front end. It utilizes user input and APIs to return recipes and how to videos for selected recipes.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshJancula/FridgeIngredientToMeal-groupProject1.git"
+  },
+  "author": "josh jancula",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoshJancula/FridgeIngredientToMeal-groupProject1/issues"
+  },
+  "homepage": "https://github.com/JoshJancula/FridgeIngredientToMeal-groupProject1#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.33.4"
+  }
+}
