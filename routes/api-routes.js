@@ -72,7 +72,7 @@ module.exports = function(app) {
     // login route
     app.post("/api/login", passport.authenticate("local"), function(req, res) {
 
-        res.redirect("/search");
+        res.redirect("/index");
 
     });
 
