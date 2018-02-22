@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Food APP</title>
     <!-- Compiled and minified CSS -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!--fonts-->
     <link href="https://fonts.googleapis.com/css?family=Courgette|Niconne|Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet">
@@ -27,22 +29,26 @@
 </head>
 
 <body>
-    <!--header that has some text nothing too special (for now)-->
+   <!--header that has some text nothing too special (for now)-->
     <header class="page-header">
         <div class="container">
             <div class="row">
-                <div class="col m12">
+                <div class="col m10 s12">
                     <h1 class="white-text">Fridge 2 Plate <img id="logoID" src="assets/images/fridge2plate.png" alt="logo"></h1>
+                    </div>
+                    <div class="col m2 s12">
+                     <a class="white-text text-lighten-4 right" href='/login' id="mine">My Recipes</a>
                 </div>
             </div>
         </div>
     </header>
 
 
+
     <!--middle section of the page containing main input n stuff-->
     <div class="row">
         <!--contains the search button and input fields-->
-        <div class="col m3" id="submitContent">
+        <div class="col m3 " id="submitContent">
 
             <div class="row" id="btnandsubmit">
                 <div class="col m2">
@@ -66,7 +72,7 @@
 
             <div class="row">
                 <div class="col m12">
-                    <button class="btn waves-effect waves-cyan accent-4" id="submitForRecipes" type="submit" name="action">Submit
+                    <button class="btn waves-effect waves-cyan accent-4 scrollspy" id="submitForRecipes" href="#recipesGoHere" type="submit" name="action">Submit
 
                         <i class="material-icons right">send</i>
                     </button>
@@ -82,10 +88,9 @@
 
         <!--contains the recipes rendered from the search-->
         <div class="col m8" id="recipesGoHere">
+            <h2 id="instructions">Input your ingredients and let us find a new recipe for you!</h2>
         </div>
-        <!--contains the ingredients the user searched for -->
-        <!--<div class="col s4" id="ingredientsGoHere">-->
-        <!--</div>-->
+      
     </div>
 
 
@@ -100,6 +105,13 @@
 
     <script src="assets/javascript/main.js "></script>
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
+    
+     <script>
+        $(document).ready(function() {
+            $('.collapsible').collapsible();
+            $('.scrollspy').scrollSpy();
+        });
+    </script>
 </body>
 
 </html>

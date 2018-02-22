@@ -26,17 +26,21 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         len: [1]
     }
-   
-     
     
-  });
+  }); // check to make sure password is correct
  fridgeUser.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
-  // Hooks are automatic methods that run during various phases of the User Model lifecycle
-  // In this case, before a User is created, we will automatically hash their password
+ // before we create the user encrypt the password
   fridgeUser.hook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
+  
+   fridgeUser.associate = function(models) {
+    // Associating the user with their saved recipes
+    fridgeUser.hasMany(models.Recipe, {
+      onDelete: "cascade"
+    });
+  };
   return fridgeUser;
 };

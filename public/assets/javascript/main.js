@@ -79,24 +79,24 @@ $(document.body).on("click", ".deleteBox", function() {
     listOfIngredients.splice(this, 1);
 });
 
-//Firebase config
-var config = {
-    apiKey: "AIzaSyB3lbSA5Y4e4StvaYtm5sno0pDad-90NeM",
-    authDomain: "groupproject1-fridgetomeal.firebaseapp.com",
-    databaseURL: "https://groupproject1-fridgetomeal.firebaseio.com",
-    projectId: "groupproject1-fridgetomeal",
-    storageBucket: "groupproject1-fridgetomeal.appspot.com",
-    messagingSenderId: "32759158700"
-};
+// //Firebase config
+// var config = {
+//     apiKey: "AIzaSyB3lbSA5Y4e4StvaYtm5sno0pDad-90NeM",
+//     authDomain: "groupproject1-fridgetomeal.firebaseapp.com",
+//     databaseURL: "https://groupproject1-fridgetomeal.firebaseio.com",
+//     projectId: "groupproject1-fridgetomeal",
+//     storageBucket: "groupproject1-fridgetomeal.appspot.com",
+//     messagingSenderId: "32759158700"
+// };
 
-firebase.initializeApp(config);
-var database = firebase.database();
-/*function storeRecipe (title){
-    listOfTitles.push(title);
-    database.ref().set({
-        titles:listOfTitles
-    })
-}*/
+// firebase.initializeApp(config);
+// var database = firebase.database();
+// /*function storeRecipe (title){
+//     listOfTitles.push(title);
+//     database.ref().set({
+//         titles:listOfTitles
+//     })
+// }*/
 $(function() {
     //Function populates our videosGoHere division when called by click event.
     $(document.body).on("click", ".individualRecipes", function(e) {
@@ -158,6 +158,7 @@ function init() {
     gapi.client.load("youtube", "v3", function() {
         //yt api is ready
     })
+   
 }
 
 // when you click on the submit button
@@ -204,7 +205,7 @@ $("#submitForRecipes").on('click', function(event) {
             getRecipe(id, i, recipeDiv);
             //store the results here
             var title = results[i].title;
-            title = "how to make " + title; //add how to make to recipe title to bring up more relevant results
+            // title = title; //add how to make to recipe title to bring up more relevant results
             var image = results[i].image;
             //Validation logic of title
             var findHashtag = title.search("#"); //find if title has a hashtag.

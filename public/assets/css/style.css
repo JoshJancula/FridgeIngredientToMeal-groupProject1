@@ -1,5 +1,14 @@
 body {
-    background-image: url("../images/brickwall.png");
+  overflow: auto;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-image: url(http://drchristianson.com/wp-content/uploads/2015/01/Food-Fruits-and-Veggies-and-pasta-and-rice-with-cutting-board.jpg);
+    background-repeat: no-repeat;
+    /*background-size: auto;*/
+    background-size: cover;
+	background-position: center;
+    
 }
 
 .carousel-item {
@@ -12,18 +21,18 @@ body {
 }
 
 .page-header {
-    background: rgba(0, 0, 0, 0);
-
+    /*background: rgba(0, 0, 0, 0);*/
+    color: white;
     font-family: 'Syncopate', sans-serif;
     margin-left: 5px;
     margin-right: 5px;
     text-shadow: #00b8d4 0px 0px 10px;
-    font-weight: 5px;
+    font-weight: 5%;
 }
 
-.white-text {
-    color: black !important;
-}
+/*.white-text {*/
+/*    color: black !important;*/
+/*}*/
 
 #addIngrButton {
     margin-top: 20px;
@@ -42,11 +51,14 @@ body {
 }
 
 #submitContent {
+      opacity: .9;
     border-style: inset;
-    margin-left: 5px;
+    margin-left: 2%;
     background: white;
     margin-right: 50px;
     background-color: white;
+    max-width: 350px;
+    width: 100%;
 }
 
 #ingredients {
@@ -146,6 +158,7 @@ img.individualRecipes {
     width: 100%;
     position: relative;
     bottom: 150px;
+    color: white;
 
 }
 
@@ -157,4 +170,46 @@ img.individualRecipes {
 .individualRecipes {
     font-family: sans-serif;
     font-weight: bolder;
+    color: white;
+    text-align: center;
+}
+
+#mine {
+    margin-top: 30%;
+
+}
+
+#instructions {
+     font-family: 'Syncopate', sans-serif;
+     color: white;
+     text-align: center;
+
+}
+
+@media screen and (max-width: 750px) and (min-width: 200px) {
+   
+    #submitContent {
+    border-style: inset;
+    margin-left: 5%;
+    background: white;
+    margin-top: 5%;
+    background-color: white;
+    width: 60%;
+}
+
+#instructions {
+     font-family: 'Syncopate', sans-serif;
+     color: white;
+     text-align: center;
+     margin-left: 5%;
+
+}
+
+#mine {
+    margin-top: 3%;
+    font-size: 20px;
+
+}
+
+ 
 }
