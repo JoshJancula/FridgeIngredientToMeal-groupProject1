@@ -179,6 +179,10 @@ img.individualRecipes {
 
 }
 
+.saveRecipe {
+     width: 250px;
+}
+
 #instructions {
      font-family: 'Syncopate', sans-serif;
      color: white;
@@ -190,7 +194,7 @@ img.individualRecipes {
    
     #submitContent {
     border-style: inset;
-    margin-left: 5%;
+    margin-left: 8%;
     background: white;
     margin-top: 5%;
     background-color: white;

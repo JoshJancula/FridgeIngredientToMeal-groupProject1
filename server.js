@@ -31,7 +31,8 @@ app.use(express.static("public"));
 // Routes
 // =============================================================
 
-require("./routes/api-routes.js")(app);
+require("./routes/api-users.js")(app);
+require("./routes/api-recipes.js")(app);
 require("./routes/html-routes.js")(app);
 
 

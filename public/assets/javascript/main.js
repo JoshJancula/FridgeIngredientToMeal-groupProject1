@@ -201,6 +201,8 @@ $("#submitForRecipes").on('click', function(event) {
         for (var i = 0; i < results.length; i++) {
 
             var recipeDiv = $("<div class='item'>");
+            var saveButton = $("<button class='btn saveRecipe'>Save Recipe</button>");
+
             var id = results[i].id
             getRecipe(id, i, recipeDiv);
             //store the results here
@@ -222,7 +224,7 @@ $("#submitForRecipes").on('click', function(event) {
             singleRecipeDiv.attr('data-title', results[i].title);*/
 
             // Creating a paragraph tag with recipe title
-            var p = $("<p class='individualRecipes'>").text(title);
+            var p = $("<h6 class='individualRecipes'>").text(title);
             p.attr("data-title", uriTitle);
 
             // Creating an image tag
@@ -231,6 +233,7 @@ $("#submitForRecipes").on('click', function(event) {
 
             // append the paragraph and image we created to the "recipeDiv" div we created
             recipeDiv.append(p);
+            recipeDiv.append(saveButton);
             recipeDiv.append(image);
             // recipeDiv.append(message);
 
@@ -284,8 +287,8 @@ $("#submitForRecipes").on('click', function(event) {
             method: 'GET'
 
         }).done(function(response2) {
-
             var results = response2;
+            
             //creating a dropdown to display these results under each recipe
             var ul = $("<ul class='dropdown-content' id='dropdown" + recipeNumber + "'>")
             // <!-- Dropdown Trigger -->
