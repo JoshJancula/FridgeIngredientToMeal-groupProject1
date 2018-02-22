@@ -52,8 +52,7 @@ module.exports = function(app) {
 
     // Route for getting some data about our user to be used client side
     app.get("/api/user_data", function(req, res) {
-        include: [db.Recipe]
-
+        
         if (!req.user) {
             // The user is not logged in, send back an empty object
             res.json({});
@@ -66,6 +65,7 @@ module.exports = function(app) {
                 username: req.user.username,
 
             }) // and the recipes they saved
+            include: [db.Recipe]
 
         }
     });

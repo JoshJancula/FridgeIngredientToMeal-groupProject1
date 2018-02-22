@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+
+
+</head>
+
+<body>
+  
+   <header class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col m10 s12">
+                    <h1 class="white-text">Fridge 2 Plate <img id="logoID" src="assets/images/fridge2plate.png" alt="logo"></h1>
+                    </div>
+                    <div class="col m2 s12">
+                        <ul>
+                            
+                    <li><a class="white-text text-lighten-4 right" href='/main' id="main">Main</a></li>
+                    <li><a class="white-text text-lighten-4 right" href='/logout' id="logout">Logout</a></li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+
+        <!--sideNav hidden on large scrrens-->
+
+        <ul id="slide-out" class="side-nav hide-on-large blue-grey darken-2">
+            <li><a href="/main" class="white-text" id="mainSide">Main</a></li>
+            <li><a href="/logout" class="white-text" id="logoutSide">Logout</a></li>
+        </ul>
+
+        <!--end side nav-->
+        
+
+            <div class="row">
+                <div class="container col m1"></div>
+
+                <div class="container col m10">
+                    
+                    <!--saved recipes go here-->
+                    <div class="myRecipes"></div>
+
+                    <div class="row">
+
+                        <div class="center-align">
+
+                            <div class="container col m6">
+                              
+                                <!-- deleteModal trigger -->
+                                <button data-target="deleteModal" id="deleteBtn" class="btn modal-trigger">Delete My Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+    </main>
+
+    <!-- delete modal -->
+    <div id="deleteModal" class="modal blue-grey darken-2">
+        <div class="modal-content">
+
+            <h5 class="white-text">Are you sure? This cannot be undone.<span class="accountInfo"></span></h5>
+
+        </div>
+
+        <div class="modal-footer">
+            <a href="#!" class="modal-action left modal-close waves-effect waves-green btn-flat">Whoops Nevermind</a>
+
+            <a href="#!" class="modal-action right modal-close waves-effect waves-green btn-flat" id="handleDelete">I'm Sure</a>
+        </div>
+    </div>
+    </div>
+    <!--end modal-->
+
+
+    <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/profile.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.collapsible').collapsible();
+            $(".button-collapse").sideNav();
+        });
+    </script>
+
+
+
+</body>
+
+</html>

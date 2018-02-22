@@ -79,24 +79,24 @@ $(document.body).on("click", ".deleteBox", function() {
     listOfIngredients.splice(this, 1);
 });
 
-// //Firebase config
-// var config = {
-//     apiKey: "AIzaSyB3lbSA5Y4e4StvaYtm5sno0pDad-90NeM",
-//     authDomain: "groupproject1-fridgetomeal.firebaseapp.com",
-//     databaseURL: "https://groupproject1-fridgetomeal.firebaseio.com",
-//     projectId: "groupproject1-fridgetomeal",
-//     storageBucket: "groupproject1-fridgetomeal.appspot.com",
-//     messagingSenderId: "32759158700"
-// };
+//Firebase config
+var config = {
+    apiKey: "AIzaSyB3lbSA5Y4e4StvaYtm5sno0pDad-90NeM",
+    authDomain: "groupproject1-fridgetomeal.firebaseapp.com",
+    databaseURL: "https://groupproject1-fridgetomeal.firebaseio.com",
+    projectId: "groupproject1-fridgetomeal",
+    storageBucket: "groupproject1-fridgetomeal.appspot.com",
+    messagingSenderId: "32759158700"
+};
 
-// firebase.initializeApp(config);
-// var database = firebase.database();
-// /*function storeRecipe (title){
-//     listOfTitles.push(title);
-//     database.ref().set({
-//         titles:listOfTitles
-//     })
-// }*/
+firebase.initializeApp(config);
+var database = firebase.database();
+/*function storeRecipe (title){
+    listOfTitles.push(title);
+    database.ref().set({
+        titles:listOfTitles
+    })
+}*/
 $(function() {
     //Function populates our videosGoHere division when called by click event.
     $(document.body).on("click", ".individualRecipes", function(e) {
@@ -158,7 +158,6 @@ function init() {
     gapi.client.load("youtube", "v3", function() {
         //yt api is ready
     })
-   
 }
 
 // when you click on the submit button
@@ -201,14 +200,12 @@ $("#submitForRecipes").on('click', function(event) {
         for (var i = 0; i < results.length; i++) {
 
             var recipeDiv = $("<div class='item'>");
-            var saveButton = $("<button class='btn saveRecipe'>Save Recipe</button>");
-
             var id = results[i].id
             getRecipe(id, i, recipeDiv);
             //store the results here
             var title = results[i].title;
-            // title = title; //add how to make to recipe title to bring up more relevant results
             var image = results[i].image;
+            var saveButton = $("<button data-target='viewProfileModal' class='btn saveRecipe'  data-id='" + id + "'>Save Recipe</button>")
             //Validation logic of title
             var findHashtag = title.search("#"); //find if title has a hashtag.
             //Hashtags usually have multiple words strung together without spaces, bringing search results to 0.
@@ -287,8 +284,8 @@ $("#submitForRecipes").on('click', function(event) {
             method: 'GET'
 
         }).done(function(response2) {
+
             var results = response2;
-            
             //creating a dropdown to display these results under each recipe
             var ul = $("<ul class='dropdown-content' id='dropdown" + recipeNumber + "'>")
             // <!-- Dropdown Trigger -->
@@ -324,6 +321,8 @@ $("#submitForRecipes").on('click', function(event) {
 
 
     }
+    
+    
 
 
 });

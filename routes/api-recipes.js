@@ -10,7 +10,7 @@ module.exports = function(app) {
   app.get("/api/recipes", function(req, res) {
     var query = {};
     if (req.query.user_id) {
-      query.AuthorId = req.query.author_id;
+      query.UserId = req.query.user_id;
     }
    
     db.Recipe.findAll({
