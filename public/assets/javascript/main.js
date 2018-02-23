@@ -326,3 +326,13 @@ $("#submitForRecipes").on('click', function(event) {
 
 
 });
+
+
+// view profile button
+  $("#mine").on("click", function(event) {
+    event.preventDefault();
+    // go to the profile
+    window.location.href = '/profile';
+  });
+
+
