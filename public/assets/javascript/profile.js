@@ -44,20 +44,6 @@ $("#main").on("click", function(event) {
 
 
 
-// button to logout
-$("#logoutSide").on("click", function(event) {
-  $.get("/logout", function(data) {
-    window.location.href = '/index';
-  });
-});
 
-
-
-// view profile button
-$("#mainSide").on("click", function(event) {
-  event.preventDefault();
-  // go to the profile
-  window.location.href = '/index';
-});
 
 });
