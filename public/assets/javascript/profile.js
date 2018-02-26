@@ -213,5 +213,83 @@ $("#main").on("click", function(event) {
   window.location.href = '/index';
 });
 
+
+
 // end document ready
 });
+
+
+// Firebase config
+var config = {
+    apiKey: "AIzaSyB3lbSA5Y4e4StvaYtm5sno0pDad-90NeM",
+    authDomain: "groupproject1-fridgetomeal.firebaseapp.com",
+    databaseURL: "https://groupproject1-fridgetomeal.firebaseio.com",
+    projectId: "groupproject1-fridgetomeal",
+    storageBucket: "groupproject1-fridgetomeal.appspot.com",
+    messagingSenderId: "32759158700"
+};
+
+firebase.initializeApp(config);
+var database = firebase.database();
+
+$(function() {
+    //Function populates our videosGoHere division when called by click event.
+    $(document.body).on("click", ".individualRecipes", function(e) {
+        e.preventDefault();
+
+
+        $("#videosGoHere").html(""); //clear out old carousel videos if present
+        $("#videosGoHere").show();
+        var carousel = $("<div class='carousel'>"); //create brand new carousel div element
+        $("#videosGoHere").append(carousel); // place in videosGoHere div
+        var queryTitle = $(this).attr("data-title"); //hook title of recipe
+       
+        //prepare request
+        var request = gapi.client.youtube.search.list({
+            part: "snippet",
+            type: "video",
+            //change the hook here to whatever are ingredients
+            q: queryTitle, //encodeURIComponent(queryTitle), //I'm not sure if this is needed at the end. Testing shows it works with spaces without it added//.replace(/%20/g, "+"),
+            maxResults: 5,
+            order: "viewCount",
+            publishedAfter: "2010-01-01T00:00:00Z"
+        })
+        //execute request
+        request.execute(function(response) {
+            setTimeout(function() { //wait short delay before execute request so jQuery finds newly created carousel element
+                var results = response.result;
+                $.each(results.items, function(index, item) {
+                    //$("#videosGoHere").append(item.id.videoId + " " + item.snippet.title + "<br>")
+                    var videoId = item.id.videoId;
+                    var htmlVideo = "<a class='carousel-item' href='#one!'><div class='video-container'><iframe src='https://www.youtube.com/embed/" + videoId + "' width='560' height='315' frameborder='0' allowfullscreen></iframe></div></a>";
+                    $(".carousel").append(htmlVideo);
+                })
+            }, 50)
+
+
+            //initialize carousel and give parameters
+            $(document).ready(function() {
+                setTimeout(function() { carouselInit() }, 1750) //wait 3 seconds before running carouselinit
+            });
+        })
+    })
+})
+// function to initialize our carousel
+function carouselInit() {
+    $('.carousel').carousel({
+        //height: 500,
+        // padding: 100,
+        // shift: 50,
+        // dist: -100,
+        // width: 600,
+        //indicators: true, //uncomment if you want indicators, although you will have to stylize them to show.
+    });
+}
+
+
+function init() {
+    gapi.client.setApiKey("AIzaSyCrDLUDgfk0UO5izg05bh7tU1dIjbBmBA8");
+    gapi.client.load("youtube", "v3", function() {
+        //yt api is ready
+    })
+}

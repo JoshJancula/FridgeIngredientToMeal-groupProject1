@@ -80,18 +80,18 @@ $(document.body).on("click", ".deleteBox", function() {
     listOfIngredients.splice(this, 1);
 });
 
-//Firebase config
-// var config = {
-//     apiKey: "AIzaSyB3lbSA5Y4e4StvaYtm5sno0pDad-90NeM",
-//     authDomain: "groupproject1-fridgetomeal.firebaseapp.com",
-//     databaseURL: "https://groupproject1-fridgetomeal.firebaseio.com",
-//     projectId: "groupproject1-fridgetomeal",
-//     storageBucket: "groupproject1-fridgetomeal.appspot.com",
-//     messagingSenderId: "32759158700"
-// };
+// Firebase config
+var config = {
+    apiKey: "AIzaSyB3lbSA5Y4e4StvaYtm5sno0pDad-90NeM",
+    authDomain: "groupproject1-fridgetomeal.firebaseapp.com",
+    databaseURL: "https://groupproject1-fridgetomeal.firebaseio.com",
+    projectId: "groupproject1-fridgetomeal",
+    storageBucket: "groupproject1-fridgetomeal.appspot.com",
+    messagingSenderId: "32759158700"
+};
 
-// firebase.initializeApp(config);
-// var database = firebase.database();
+firebase.initializeApp(config);
+var database = firebase.database();
 /*function storeRecipe (title){
     listOfTitles.push(title);
     database.ref().set({
@@ -145,9 +145,11 @@ $(function() {
 function carouselInit() {
     $('.carousel').carousel({
         //height: 500,
-        padding: 100,
-        shift: 50,
-        dist: -100,
+        // padding: 100,
+        // shift: 50,
+        // dist: -100,
+        
+        // width: 600,
 
         //indicators: true, //uncomment if you want indicators, although you will have to stylize them to show.
     });

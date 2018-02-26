@@ -14,10 +14,15 @@ body {
 .carousel-item {
     height: 332px !important;
     width: 500px !important;
+    padding: 3%;
 }
 
 .carousel {
+    
     height: 332px !important;
+    width: 800px;
+    
+    /*width: 100%;*/
 }
 
 .page-header {
@@ -216,6 +221,19 @@ img.individualRecipes {
     margin-top: 3%;
     font-size: 30px;
 
+}
+
+.carousel {
+    
+    height: 332px !important;
+    width: 400px;
+    /*width: 100%;*/
+}
+
+.carousel-item {
+    height: 232px !important;
+    width: 350px !important;
+    padding: 1%;
 }
 
  
