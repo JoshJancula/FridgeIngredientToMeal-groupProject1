@@ -7,7 +7,12 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    ingredients: {
+    image: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      len: [1]
+    },
+    spoonId: {
       type: DataTypes.TEXT,
       allowNull: false,
       len: [1]

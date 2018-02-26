@@ -80,17 +80,17 @@ $(document.body).on("click", ".deleteBox", function() {
 });
 
 //Firebase config
-var config = {
-    apiKey: "AIzaSyB3lbSA5Y4e4StvaYtm5sno0pDad-90NeM",
-    authDomain: "groupproject1-fridgetomeal.firebaseapp.com",
-    databaseURL: "https://groupproject1-fridgetomeal.firebaseio.com",
-    projectId: "groupproject1-fridgetomeal",
-    storageBucket: "groupproject1-fridgetomeal.appspot.com",
-    messagingSenderId: "32759158700"
-};
+// var config = {
+//     apiKey: "AIzaSyB3lbSA5Y4e4StvaYtm5sno0pDad-90NeM",
+//     authDomain: "groupproject1-fridgetomeal.firebaseapp.com",
+//     databaseURL: "https://groupproject1-fridgetomeal.firebaseio.com",
+//     projectId: "groupproject1-fridgetomeal",
+//     storageBucket: "groupproject1-fridgetomeal.appspot.com",
+//     messagingSenderId: "32759158700"
+// };
 
-firebase.initializeApp(config);
-var database = firebase.database();
+// firebase.initializeApp(config);
+// var database = firebase.database();
 /*function storeRecipe (title){
     listOfTitles.push(title);
     database.ref().set({
@@ -205,7 +205,10 @@ $("#submitForRecipes").on('click', function(event) {
             //store the results here
             var title = results[i].title;
             var image = results[i].image;
-            var saveButton = $("<button data-target='viewProfileModal' class='btn saveRecipe'  data-id='" + id + "'>Save Recipe</button>")
+            var saveButton = $("<button class='btn saveRecipe'>Save Recipe</button>");
+            saveButton.attr("data-id", id);
+            saveButton.attr("src", image);
+            saveButton.attr("data-title", title)
             //Validation logic of title
             var findHashtag = title.search("#"); //find if title has a hashtag.
             //Hashtags usually have multiple words strung together without spaces, bringing search results to 0.
@@ -226,14 +229,12 @@ $("#submitForRecipes").on('click', function(event) {
 
             // Creating an image tag
             image = "<div class= 'dynamicImage'><img src=" + image + " class='individualRecipes' data-title=" + uriTitle + "> <p class='hoverText'>Click to find a helpful cooking tutorial</p> </div>";
-            //image.attr("data-title", title);
-
+           
             // append the paragraph and image we created to the "recipeDiv" div we created
             recipeDiv.append(p);
             recipeDiv.append(saveButton);
             recipeDiv.append(image);
-            // recipeDiv.append(message);
-
+            
             // prepend the recipeDiv to the "#recipesGoHere" div in the HTML
             $("#recipesGoHere").prepend(recipeDiv);
 

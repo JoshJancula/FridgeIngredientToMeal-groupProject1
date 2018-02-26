@@ -20,6 +20,18 @@ module.exports = function(app) {
 
 
 
+ app.get("/api/users/:id", function(req, res) {
+   
+    db.fridgeUser.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Recipe]
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
 
 
     // update password when user forgets theirs
@@ -85,7 +97,7 @@ module.exports = function(app) {
         db.fridgeUser.create({
                 email: req.body.email,
                 password: req.body.password,
-                username: req.body.username,
+                username: req.body.username
 
             }).then(function(dbUser) {
 

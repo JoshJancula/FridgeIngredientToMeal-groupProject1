@@ -9,8 +9,8 @@ module.exports = function(app) {
   // GET route for getting all saved recipes
   app.get("/api/recipes", function(req, res) {
     var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
+    if (req.query.id) {
+      query.id = req.query.id;
     }
    
     db.Recipe.findAll({
