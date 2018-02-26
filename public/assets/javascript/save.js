@@ -36,7 +36,7 @@
   function submitRecipe(recipe) {
     // console.log("title: " + title + " image: " + image + " spoonId: " + id);
     $.post("/api/recipes", recipe, function() {
-      // window.location.href = "/index";
+      window.location.href = "/index";
     });
   }
 

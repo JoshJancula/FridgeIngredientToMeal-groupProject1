@@ -102,7 +102,7 @@
     </div>
 
 
-  <!-- terms modal -->
+  <!-- login modal -->
         <div id="loginModal" class="modal blue-green lighten-2">
             <div class="modal-content">
 
@@ -115,7 +115,22 @@
                 <a href="login" class="modal-action modal-close waves-effect waves-green btn-flat" id="registerUser">Login</a>
             </div>
         </div>
+        
+        <!--end modal-->
+        
+         <!-- saved modal -->
+        <div id="savedModal" class="modal blue-green lighten-2">
+            <div class="modal-content">
+
+                <h2 class="white-text">You must log in first to save recipes.<span class="accountInfo"></span></h2>
+
+            </div>
+
+            <div class="modal-footer">
+                <a href="#" id="why2" class="modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
+            </div>
         </div>
+        
         <!--end modal-->
 
   
@@ -129,7 +144,7 @@
             $('.collapsible').collapsible();
             $('.scrollspy').scrollSpy();
             $('.carousel').carousel();
-               $('.modal').modal();
+            $('.modal').modal();
 
         });
     </script>

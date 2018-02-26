@@ -40,7 +40,7 @@ $("#videosGoHere").hide();
         for (var i = 0; i < results.length; i++) {
 
             var recipeDiv = $("<div class='item'>");
-            var id = results[i].spoonId
+            var id = results[i].id
             getRecipe(id, i, recipeDiv);
             //store the results here
             var title = results[i].title;
@@ -60,9 +60,7 @@ $("#videosGoHere").hide();
             var uriTitle = title.replace(/\(.+?\)/g, ''); //replace parentheses with +
             uriTitle = uriTitle.replace(/[^a-z0-9+]+/gi, ' '); //replace all non  a-z 0-9 with a space
             uriTitle = encodeURIComponent(uriTitle).replace(/%20/g, '+'); //encode to uri and change encoded spaces to +
-            /*var singleRecipeDiv = $('<div class="individualRecipes">');
-            singleRecipeDiv.attr('data-title', results[i].title);*/
-
+          
             // Creating a paragraph tag with recipe title
             var p = $("<h6 class='individualRecipes'>").text(title);
             p.attr("data-title", uriTitle);
@@ -185,7 +183,18 @@ $("#videosGoHere").hide();
     });
   });
   
-  
+  // delete a recipe 
+    $(document).on("click", ".deleteRecipe", function(event) {
+      let id = $(this).attr("data-id");
+        $.ajax({
+      method: "DELETE",
+      url: "/api/recipes/" + id
+    })
+    .done(function() {
+     window.location.href = '/profile';
+    });
+      
+    });
 
 
 // button to logout
