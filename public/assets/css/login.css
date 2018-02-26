@@ -2,6 +2,12 @@ html {
     min-height: 100%;
 }
 
+
+#termsModal, #forgotPassword {
+     opacity: .9;
+      background: #00b8d4;
+}
+
 #userLogin {
     overflow: auto;
     margin-top: 100px;

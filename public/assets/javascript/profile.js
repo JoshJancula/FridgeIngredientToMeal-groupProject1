@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  // initially hide the carousel area
+$("#videosGoHere").hide();
+
   $('.modal').modal();
   // get the current logged in user info
   $.get("api/user_data", {}, function(data) {
@@ -21,6 +24,7 @@ $(document).ready(function() {
     });
     
   })
+  
   
   // if they don't have any yet
   function displayEmpty() {
@@ -180,6 +184,8 @@ $(document).ready(function() {
       });
     });
   });
+  
+  
 
 
 // button to logout

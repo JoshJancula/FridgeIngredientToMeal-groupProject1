@@ -1,7 +1,8 @@
 // global variables
 var ingrCount = 0
 var listOfIngredients = [];
-var listOfTitles = [];
+// initially hide the carousel area
+$("#videosGoHere").hide();
 
 
 // when you click on the add button for ingredients
@@ -104,11 +105,11 @@ $(function() {
 
 
         $("#videosGoHere").html(""); //clear out old carousel videos if present
+        $("#videosGoHere").show();
         var carousel = $("<div class='carousel'>"); //create brand new carousel div element
         $("#videosGoHere").append(carousel); // place in videosGoHere div
         var queryTitle = $(this).attr("data-title"); //hook title of recipe
-        //storeRecipe(queryTitle);
-
+       
         //prepare request
         var request = gapi.client.youtube.search.list({
             part: "snippet",
@@ -220,9 +221,7 @@ $("#submitForRecipes").on('click', function(event) {
             var uriTitle = title.replace(/\(.+?\)/g, ''); //replace parentheses with +
             uriTitle = uriTitle.replace(/[^a-z0-9+]+/gi, ' '); //replace all non  a-z 0-9 with a space
             uriTitle = encodeURIComponent(uriTitle).replace(/%20/g, '+'); //encode to uri and change encoded spaces to +
-            /*var singleRecipeDiv = $('<div class="individualRecipes">');
-            singleRecipeDiv.attr('data-title', results[i].title);*/
-
+           
             // Creating a paragraph tag with recipe title
             var p = $("<h6 class='individualRecipes'>").text(title);
             p.attr("data-title", uriTitle);

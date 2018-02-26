@@ -177,8 +177,13 @@ img.individualRecipes {
     width: 300px;
 }
 
-.saveRecipe {
-     width: 250px;
+.saveRecipe, .deleteRecipe {
+     background: #00b8d4;
+}
+
+#deleteModal, #loginModal {
+    
+      background: #00b8d4;
 }
 
 #instructions {

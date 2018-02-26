@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+     <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 
 
@@ -68,12 +68,18 @@
                 </div>
 
             </div>
+                <!--videos are output and displayed down here-->
+    <div class="row" id="videosGoHere">
+        <div class="carousel">
+
+        </div>
+    </div>
 
 
     </main>
 
     <!-- delete modal -->
-    <div id="deleteModal" class="modal blue-grey darken-2">
+    <div id="deleteModal" class="modal  blue-green lighten-1">
         <div class="modal-content">
 
             <h5 class="white-text">Are you sure? This cannot be undone.<span class="accountInfo"></span></h5>
@@ -89,10 +95,11 @@
     </div>
     <!--end modal-->
 
-
     <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript" src="assets/javascript/profile.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+
 
     <script>
         $(document).ready(function() {

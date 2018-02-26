@@ -14,6 +14,10 @@
      // when we save a new recipe
     console.log("title: " + title + " image: " + image + " spoonId: " + id + " user: " + user);
     event.preventDefault();
+    if (!user || user === "undefined") {
+      $("#loginModal").show();
+      
+    } else {
     //  newRcipe object to hand to the database
     var newRecipe = {
        title: title,
@@ -23,6 +27,8 @@
         };
         
       submitRecipe(newRecipe);
+  }
+  
   });
   });
   
@@ -30,7 +36,10 @@
   function submitRecipe(recipe) {
     // console.log("title: " + title + " image: " + image + " spoonId: " + id);
     $.post("/api/recipes", recipe, function() {
-      window.location.href = "/index";
+      // window.location.href = "/index";
     });
   }
 
+$("#why").on("click", function() {
+   $("#loginModal").hide();
+})
