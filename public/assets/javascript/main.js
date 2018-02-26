@@ -92,22 +92,18 @@ var config = {
 
 firebase.initializeApp(config);
 var database = firebase.database();
-/*function storeRecipe (title){
-    listOfTitles.push(title);
-    database.ref().set({
-        titles:listOfTitles
-    })
-}*/
+
 $(function() {
     //Function populates our videosGoHere division when called by click event.
     $(document.body).on("click", ".individualRecipes", function(e) {
         e.preventDefault();
 
-
+         $('.scrollspy').scrollSpy();
         $("#videosGoHere").html(""); //clear out old carousel videos if present
         $("#videosGoHere").show();
         var carousel = $("<div class='carousel'>"); //create brand new carousel div element
         $("#videosGoHere").append(carousel); // place in videosGoHere div
+         scroll();
         var queryTitle = $(this).attr("data-title"); //hook title of recipe
        
         //prepare request
@@ -155,7 +151,12 @@ function carouselInit() {
     });
 }
 
-
+// scrollspy
+function scroll() {
+    return 'a[href="#videosGoHere"]';
+  }
+  
+// initialize carousel
 function init() {
     gapi.client.setApiKey("AIzaSyCrDLUDgfk0UO5izg05bh7tU1dIjbBmBA8");
     gapi.client.load("youtube", "v3", function() {
@@ -229,7 +230,7 @@ $("#submitForRecipes").on('click', function(event) {
             p.attr("data-title", uriTitle);
 
             // Creating an image tag
-            image = "<div class= 'dynamicImage'><img src=" + image + " class='individualRecipes' data-title=" + uriTitle + "> <p class='hoverText'>Click to find a helpful cooking tutorial</p> </div>";
+            image = "<div class= 'dynamicImage'><img src=" + image + " class='individualRecipes' data-title=" + uriTitle + "> <p class='hoverText'>Click to find a helpful cooking tutorial</p></div>";
            
             // append the paragraph and image we created to the "recipeDiv" div we created
             recipeDiv.append(p);

@@ -7,12 +7,10 @@
     var id = $(this).attr("data-id");
     
   $.get("api/user_data", {}, function(data) {
-    console.log("getting all recipeData: " + data);
-   
+
   }).done(function(data){
        user = data.id
      // when we save a new recipe
-    console.log("title: " + title + " image: " + image + " spoonId: " + id + " user: " + user);
     event.preventDefault();
     if (!user || user === "undefined") {
       $("#loginModal").show();
@@ -34,9 +32,7 @@
   
    // submits the recipe
   function submitRecipe(recipe) {
-    // console.log("title: " + title + " image: " + image + " spoonId: " + id);
     $.post("/api/recipes", recipe, function() {
-      // window.location.href = "/index";
        $("#savedModal").show();
     });
   }

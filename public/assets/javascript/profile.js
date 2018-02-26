@@ -12,8 +12,8 @@ $("#videosGoHere").hide();
     $.get("/api/users/" + id, function(data) {
       console.log("Recipes", data);
       let recipes = data.Recipes;
-      if (!recipes) {
-        // show them they don't have any
+      if (recipes.length <= 0) {
+        // tell them they don't have any
         displayEmpty();
       }
       else {
@@ -29,7 +29,7 @@ $("#videosGoHere").hide();
   // if they don't have any yet
   function displayEmpty() {
     // there is nothing in here so....
-    $("#myRecipes").text("You haven't saved any recipes yet.");
+    $("#instructions").html("<h3>You haven't saved any recipes yet.</h3>");
   }
   
   // get all the recipes and display the saved recipes
