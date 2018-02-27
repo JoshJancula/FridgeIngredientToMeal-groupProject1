@@ -98,10 +98,12 @@ $(function() {
     $(document.body).on("click", ".individualRecipes", function(e) {
         e.preventDefault();
 
+         $('.scrollspy').scrollSpy();
         $("#videosGoHere").html(""); //clear out old carousel videos if present
         $("#videosGoHere").show();
         var carousel = $("<div class='carousel'>"); //create brand new carousel div element
         $("#videosGoHere").append(carousel); // place in videosGoHere div
+        //  scroll();
         var queryTitle = $(this).attr("data-title"); //hook title of recipe
        
         //prepare request
@@ -130,7 +132,11 @@ $(function() {
 
             //initialize carousel and give parameters
             $(document).ready(function() {
-                setTimeout(function() { carouselInit() }, 1750) //wait 3 seconds before running carouselinit
+                setTimeout(function() { 
+                    carouselInit();
+                    location.hash = "#pageBottom";
+                    }, 1750) //wait 3 seconds before running carouselinit
+                
             });
         })
     })
@@ -231,6 +237,7 @@ $("#submitForRecipes").on('click', function(event) {
 
             // Creating an image tag
             image = "<a href='#pageBottom'><div class= 'dynamicImage'><img src=" + image + " class='individualRecipes' data-title=" + uriTitle + "> <p class='hoverText'>Click to find a helpful cooking tutorial</p></div></a>";
+           
             // append the paragraph and image we created to the "recipeDiv" div we created
             recipeDiv.append(p);
             recipeDiv.append(saveButton);
