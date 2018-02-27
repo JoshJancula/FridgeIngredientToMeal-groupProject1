@@ -41,4 +41,3 @@ Document onclick function - recipeChoice
     Youtube api sends back embed links for top 6 results
     should show two videos at a time with a button to show the next two results
 
-ID lists

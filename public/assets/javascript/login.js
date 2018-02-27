@@ -1,13 +1,13 @@
 $(document).ready(function() {
-  
+
   var emailInput = $("#userEmail");
   var passwordInput = $("#userPassword");
-  
-  
+
+
 
   // When the form is submitted, we validate there's an email and password entered
- 
- $("#loginTheUser").on("click", function(){
+
+  $("#loginTheUser").on("click", function() {
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
@@ -31,15 +31,15 @@ $(document).ready(function() {
       email: email,
       password: password
     }).done(function(data) {
-      window.location.href='/profile';
+      window.location.href = '/profile';
       // If there's an error, log the error
     }).catch(function(err) {
       console.log(err);
     });
   }
-  
-  
-   // route to main in nav
+
+
+  // route to main in nav
   $("#main").on("click", function(event) {
     event.preventDefault();
     // go to the profile
@@ -55,65 +55,20 @@ $(document).ready(function() {
   });
 
 
-    var sender;
-    var username;
-    // initialize modal
-    $('select').material_select();
-    $('#webmasterModal').modal()
-
-
-    // when you click on submitMessage in modal
-    $("#submitMessage").on("click", function(event) {
-        event.preventDefault();
-     
-        // message to be sent
-        let message = $("#message").val().trim();
-        // get the sender information
-        $.get("api/user_data", {}, function(data) {
-            console.log(data);
-            sender = data.email;
-            username = data.username;
-            console.log("sender: " + sender + "  username: " + username);
-        }).done(function() {
-            
-        // send the message
-        $.get("/send", {
-                to: "joshjanculawebpage@gmail.com",
-                subject: "New Message",
-                html: "<h4>" + "email: " + sender + "</h4>" +
-                      "<h4>" + "name: " + username + "</h4>" +
-                      "<p>" + "message: " + message + "</p>"
-
-            },
-            function(data) {
-                if (data == "sent") {
-                    console.log("Great Success!");
-                }
-            });
-        // close the modal 
-        $('#contactWebmaster').modal('close');
-        // clear text box
-        $("#message").val("");
-    });
-
-   });
-   
-   
-
 
   // when the user forgets password
   $("#getPassword").on("click", function() {
-  event.preventDefault();
-   
+    event.preventDefault();
+
     // get the users email
     var email = $("#forgot").val().trim(); // these are possible new passwords
     var passwords = ["newPass", "hello", "dont4get", "word", "keepThis", "tryAgain", "kitten", "dolphin", "hollaBackSquirrel", "penguin", "alpha", "beta", "zeta", "test1234", "nadaMas", "qwerty", "hereYouGo", "cocoPuff", "dophPoodle", ];
-   // get a random password for them
-   var passwordValue = passwords[Math.floor(Math.random() * passwords.length)]
+    // get a random password for them
+    var passwordValue = passwords[Math.floor(Math.random() * passwords.length)]
     var newPassword = passwordValue
-    
-    console.log("new password is: "  + passwordValue)
-     $.ajax({
+
+    console.log("new password is: " + passwordValue)
+    $.ajax({
       method: "PUT",
       url: "/api/users/email/" + email,
       data: {
@@ -123,24 +78,24 @@ $(document).ready(function() {
       // now send them their password
     }).done(function() {
       console.log("sending new password: email= " + email + " password= " + passwordValue);
-       // send the message
-        $.get("/send", {
-                to: email,
-                subject: "Your New Password",
-                html: "<p>" + "Your password new is: " + passwordValue + "</p>"
-            },
-            function(data) {
-                if (data !== "sent") {
-                    console.log("Great Success!");
-                }
-            });
-        // close the modal 
-        $('#forgotPassword').modal('close');
-        // clear text box
-        $("#forgot").val("")
-      
+      // send the message
+      $.get("/send", {
+          to: email,
+          subject: "Your New Password",
+          html: "<p>" + "Your password new is: " + passwordValue + "</p>"
+        },
+        function(data) {
+          if (data !== "sent") {
+            console.log("Great Success!");
+          }
+        });
+      // close the modal 
+      $('#forgotPassword').modal('close');
+      // clear text box
+      $("#forgot").val("")
+
     })
-    
+
   })
-  
+
 });

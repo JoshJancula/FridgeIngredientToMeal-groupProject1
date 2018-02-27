@@ -1,40 +1,37 @@
 $(document).ready(function() {
-  // initially hide the carousel area
-$("#videosGoHere").hide();
+    // initially hide the carousel area
+    $("#videosGoHere").hide();
 
-  $('.modal').modal();
-  // get the current logged in user info
-  $.get("api/user_data", {}, function(data) {
-    console.log("getting all recipeData: " + JSON.stringify(data));
-  }).done(function(data) {
-    let id = data.id;
-   // get that users recipes
-    $.get("/api/users/" + id, function(data) {
-      console.log("Recipes", data);
-      let recipes = data.Recipes;
-      if (recipes.length <= 0) {
-        // tell them they don't have any
-        displayEmpty();
-      }
-      else {
-      
-        getAll(recipes)
-       
-      }
-    });
-    
-  })
-  
-  
-  // if they don't have any yet
-  function displayEmpty() {
-    // there is nothing in here so....
-    $("#instructions").html("<h3>You haven't saved any recipes yet.</h3>");
-  }
-  
-  // get all the recipes and display the saved recipes
-  function getAll(response) {
-    // $("#recipesGoHere").html(""); //clear out recipes div when called
+    $('.modal').modal();
+    // get the current logged in user info
+    $.get("api/user_data", {}, function(data) {}).done(function(data) {
+        let id = data.id;
+        // get that users recipes
+        $.get("/api/users/" + id, function(data) {
+            console.log("Recipes", data);
+            let recipes = data.Recipes;
+            if (recipes.length <= 0) {
+                // tell them they don't have any
+                displayEmpty();
+            }
+            else {
+
+                getAll(recipes)
+
+            }
+        });
+
+    })
+
+
+    // if they don't have any yet
+    function displayEmpty() {
+        // there is nothing in here so....
+        $("#instructions").html("<h3>You haven't saved any recipes yet.</h3>");
+    }
+
+    // get all the recipes and display the saved recipes
+    function getAll(response) {
         var results = response;
         // Looping over every result item
         for (var i = 0; i < results.length; i++) {
@@ -60,19 +57,19 @@ $("#videosGoHere").hide();
             var uriTitle = title.replace(/\(.+?\)/g, ''); //replace parentheses with +
             uriTitle = uriTitle.replace(/[^a-z0-9+]+/gi, ' '); //replace all non  a-z 0-9 with a space
             uriTitle = encodeURIComponent(uriTitle).replace(/%20/g, '+'); //encode to uri and change encoded spaces to +
-          
+
             // Creating a paragraph tag with recipe title
             var p = $("<h6 class='individualRecipes'>").text(title);
             p.attr("data-title", uriTitle);
 
             // Creating an image tag
-            image = "<div class= 'dynamicImage'><img src=" + image + " class='individualRecipes' data-title=" + uriTitle + "> <p class='hoverText'>Click to find a helpful cooking tutorial</p> </div>";
-           
+            image = "<a href='#pageBottom'><div class= 'dynamicImage'><img src=" + image + " class='individualRecipes' data-title=" + uriTitle + "> <p class='hoverText'>Click to find a helpful cooking tutorial</p></div></a>";
+
             // append the paragraph and image we created to the "recipeDiv" div we created
             recipeDiv.append(p);
             recipeDiv.append(deleteButton);
             recipeDiv.append(image);
-            
+
             // prepend the recipeDiv to the "#recipesGoHere" div in the HTML
             $("#myRecipes").prepend(recipeDiv);
 
@@ -88,7 +85,6 @@ $("#videosGoHere").hide();
 
                 }, function() {
                     $(this).stop().animate({ opacity: 1 }, 500)
-                    // $(this).fadeOut();
                 });
             });
 
@@ -108,9 +104,7 @@ $("#videosGoHere").hide();
         }
     }
 
-  
-  
-  
+
     // function to get the recipe information for each recipe we got
     function getRecipe(id, recipeNumber, recipeDiv) {
         var queryURL2 = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/information';
@@ -162,60 +156,60 @@ $("#videosGoHere").hide();
 
 
     }
-    
-  
 
 
-  // delete user account
-  $("#handleDelete").click(function() {
-    // get the users id
-    $.get("api/user_data", {}, function(data) {
-      var id = data.id
-      console.log("email1: " + id);
-    }).done(function(user) {
-      $.ajax({ // go delete that shit
-        method: "DELETE",
-        url: "/api/users/" + user.id
-      }).done(function(data) { // tell me something good
-        console.log("delete was successful: " + JSON.stringify(data));
-        window.location.href = '/logout'; // redirect to login page
-      });
+
+
+    // delete user account
+    $("#handleDelete").click(function() {
+        // get the users id
+        $.get("api/user_data", {}, function(data) {
+            var id = data.id
+            console.log("email1: " + id);
+        }).done(function(user) {
+            $.ajax({ // go delete that shit
+                method: "DELETE",
+                url: "/api/users/" + user.id
+            }).done(function(data) { // tell me something good
+                console.log("delete was successful: " + JSON.stringify(data));
+                window.location.href = '/logout'; // redirect to login page
+            });
+        });
     });
-  });
-  
-  // delete a recipe 
+
+    // delete a recipe 
     $(document).on("click", ".deleteRecipe", function(event) {
-      let id = $(this).attr("data-id");
+        let id = $(this).attr("data-id");
         $.ajax({
-      method: "DELETE",
-      url: "/api/recipes/" + id
-    })
-    .done(function() {
-     window.location.href = '/profile';
+                method: "DELETE",
+                url: "/api/recipes/" + id
+            })
+            .done(function() {
+                window.location.href = '/profile';
+            });
+
     });
-      
+
+
+    // button to logout
+    $("#logout").on("click", function(event) {
+        $.get("/logout", function(data) {
+            window.location.href = '/index';
+        });
     });
 
 
-// button to logout
-$("#logout").on("click", function(event) {
-  $.get("/logout", function(data) {
-    window.location.href = '/index';
-  });
-});
+
+    // view profile button
+    $("#main").on("click", function(event) {
+        event.preventDefault();
+        // go to the profile
+        window.location.href = '/index';
+    });
 
 
 
-// view profile button
-$("#main").on("click", function(event) {
-  event.preventDefault();
-  // go to the profile
-  window.location.href = '/index';
-});
-
-
-
-// end document ready
+    // end document ready
 });
 
 
@@ -243,13 +237,13 @@ $(function() {
         var carousel = $("<div class='carousel'>"); //create brand new carousel div element
         $("#videosGoHere").append(carousel); // place in videosGoHere div
         var queryTitle = $(this).attr("data-title"); //hook title of recipe
-       
+
         //prepare request
         var request = gapi.client.youtube.search.list({
             part: "snippet",
             type: "video",
             //change the hook here to whatever are ingredients
-            q: queryTitle, //encodeURIComponent(queryTitle), //I'm not sure if this is needed at the end. Testing shows it works with spaces without it added//.replace(/%20/g, "+"),
+            q: queryTitle,
             maxResults: 5,
             order: "viewCount",
             publishedAfter: "2010-01-01T00:00:00Z"
@@ -259,7 +253,6 @@ $(function() {
             setTimeout(function() { //wait short delay before execute request so jQuery finds newly created carousel element
                 var results = response.result;
                 $.each(results.items, function(index, item) {
-                    //$("#videosGoHere").append(item.id.videoId + " " + item.snippet.title + "<br>")
                     var videoId = item.id.videoId;
                     var htmlVideo = "<a class='carousel-item' href='#one!'><div class='video-container'><iframe src='https://www.youtube.com/embed/" + videoId + "' width='560' height='315' frameborder='0' allowfullscreen></iframe></div></a>";
                     $(".carousel").append(htmlVideo);
@@ -269,21 +262,18 @@ $(function() {
 
             //initialize carousel and give parameters
             $(document).ready(function() {
-                setTimeout(function() { carouselInit() }, 1750) //wait 3 seconds before running carouselinit
+                setTimeout(function() {
+                    carouselInit();
+                    location.hash = "#pageBottom";
+
+                }, 1000) //wait 3 seconds before running carouselinit
             });
         })
     })
 })
 // function to initialize our carousel
 function carouselInit() {
-    $('.carousel').carousel({
-        //height: 500,
-        // padding: 100,
-        // shift: 50,
-        // dist: -100,
-        // width: 600,
-        //indicators: true, //uncomment if you want indicators, although you will have to stylize them to show.
-    });
+    $('.carousel').carousel({});
 }
 
 

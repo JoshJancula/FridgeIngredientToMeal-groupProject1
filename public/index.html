@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Food APP</title>
     <!-- Compiled and minified CSS -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <!--fonts-->
@@ -29,15 +29,15 @@
 </head>
 
 <body>
-   <!--header that has some text nothing too special (for now)-->
+    <!--header that has some text nothing too special (for now)-->
     <header class="page-header">
         <div class="container">
             <div class="row">
                 <div class="col m10 s12">
                     <h1 class="white-text">Fridge 2 Plate <img id="logoID" src="assets/images/fridge2plate.png" alt="logo"></h1>
-                    </div>
-                    <div class="col m2 s12">
-                     <a class="white-text text-lighten-4 right" href='#' id="mine">My Recipes</a>
+                </div>
+                <div class="col m2 s12">
+                    <a class="white-text text-lighten-4 right" href='#' id="mine">My Recipes</a>
                 </div>
             </div>
         </div>
@@ -90,57 +90,56 @@
         <div class="col m8" id="recipesGoHere">
             <h2 id="instructions">Input your ingredients and let us find a new recipe for you!</h2>
         </div>
-      
+
     </div>
 
 
     <!--videos are output and displayed down here-->
-    <div class="row" >
+    <div class="row">
         <div id="videosGoHere" class="carousel section scrollspy">
 
         </div>
     </div>
 
-  <!-- login modal -->
-        <div id="loginModal" class="modal blue-green lighten-2">
-            <div class="modal-content">
+    <!-- login modal -->
+    <div id="loginModal" class="modal blue-green lighten-2">
+        <div class="modal-content">
 
-                <h2 class="white-text">You must be logged in to save recipes.<span class="accountInfo"></span></h2>
+            <h2 class="white-text">You must be logged in to save recipes.<span class="accountInfo"></span></h2>
 
-            </div>
-
-            <div class="modal-footer">
-                <a href="#" id="why" class="modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
-                <a href="login" class="modal-action modal-close waves-effect waves-green btn-flat" id="registerUser">Login</a>
-            </div>
         </div>
-        
-        <!--end modal-->
-        
-         <!-- saved modal -->
-        <div id="savedModal" class="modal blue-green lighten-2">
-            <div class="modal-content">
 
-                <h2 class="white-text">Recipe Saved!<span class="accountInfo"></span></h2>
-
-            </div>
-
-            <div class="modal-footer">
-                <a href="#" id="why2" class="modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
-            </div>
+        <div class="modal-footer">
+            <a href="#" id="why" class="modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
+            <a href="login" class="modal-action modal-close waves-effect waves-green btn-flat" id="registerUser">Login</a>
         </div>
-        
-        <!--end modal-->
+    </div>
+
+    <!--end modal-->
+
+    <!-- saved modal -->
+    <div id="savedModal" class="modal blue-green lighten-2">
+        <div class="modal-content">
+
+            <h2 class="white-text">Recipe Saved!<span class="accountInfo"></span></h2>
+
+        </div>
+
+        <div class="modal-footer">
+            <a href="#" id="why2" class="modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
+        </div>
+    </div>
+
+    <!--end modal-->
 
     <script src="assets/javascript/main.js "></script>
     <script src="assets/javascript/save.js "></script>
     <script src="https://apis.google.com/js/client.js?onload=init"></script>
-    
-     <script>
+
+    <script>
         $(document).ready(function() {
             $('.collapsible').collapsible();
             $('.scrollspy').scrollSpy();
-            // $('.carousel').carousel();
             $('.modal').modal();
 
         });

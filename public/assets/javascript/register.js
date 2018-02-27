@@ -8,7 +8,7 @@ window.onload = function() {
   // A function for handling what happens when the form to create a new user
   function handleFormSubmit(event) {
 
-  
+
     var email = $("#registerEmail").val().trim();
     var password = $("#registerPassword").val().trim();
     var username = $("#username").val();
@@ -23,12 +23,12 @@ window.onload = function() {
       email: email,
       password: password,
       username: username,
-    
+
     }; // submit the new user 
     submitToApi(newUser);
 
     // empty out the input fields
-  
+
     $("#registerEmail").val("")
     $("#registerPassword").val("")
     $("#username").val("");

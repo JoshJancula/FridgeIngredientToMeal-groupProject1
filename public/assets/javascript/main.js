@@ -98,14 +98,14 @@ $(function() {
     $(document.body).on("click", ".individualRecipes", function(e) {
         e.preventDefault();
 
-         $('.scrollspy').scrollSpy();
+        $('.scrollspy').scrollSpy();
         $("#videosGoHere").html(""); //clear out old carousel videos if present
         $("#videosGoHere").show();
         var carousel = $("<div class='carousel'>"); //create brand new carousel div element
         $("#videosGoHere").append(carousel); // place in videosGoHere div
         //  scroll();
         var queryTitle = $(this).attr("data-title"); //hook title of recipe
-       
+
         //prepare request
         var request = gapi.client.youtube.search.list({
             part: "snippet",
@@ -121,47 +121,29 @@ $(function() {
             setTimeout(function() { //wait short delay before execute request so jQuery finds newly created carousel element
                 var results = response.result;
                 $.each(results.items, function(index, item) {
-                    //$("#videosGoHere").append(item.id.videoId + " " + item.snippet.title + "<br>")
                     var videoId = item.id.videoId;
                     var htmlVideo = "<a class='carousel-item' href='#one!'><div class='video-container'><iframe src='https://www.youtube.com/embed/" + videoId + "' width='560' height='315' frameborder='0' allowfullscreen></iframe></div></a>";
                     $(".carousel").append(htmlVideo);
-                    //$(".carousel2").append(htmlVideo);
                 })
             }, 50)
 
 
             //initialize carousel and give parameters
             $(document).ready(function() {
-                setTimeout(function() { 
+                setTimeout(function() {
                     carouselInit();
                     location.hash = "#pageBottom";
-                    }, 1750) //wait 3 seconds before running carouselinit
-                
+                }, 1000) //wait 3 seconds before running carouselinit
+
             });
         })
     })
 })
 // function to initialize our carousel
 function carouselInit() {
-    $('.carousel').carousel({
-        //height: 500,
-        // padding: 100,
-        // shift: 50,
-        // dist: -100,
-        
-        // width: 600,
-
-        //indicators: true, //uncomment if you want indicators, although you will have to stylize them to show.
-    });
+    $('.carousel').carousel({});
 }
 
-// scrollspy
-// function scroll() {
-//   $('.scrollspy').scrollSpy();
-
-//     return 'a[href="#videosGoHere"]';
-//   }
-  
 // initialize carousel
 function init() {
     gapi.client.setApiKey("AIzaSyCrDLUDgfk0UO5izg05bh7tU1dIjbBmBA8");
@@ -193,12 +175,10 @@ $("#submitForRecipes").on('click', function(event) {
         'limitLicense': false,
         'number': 6,
         'ranking': 1,
-        // 'ingredientsRequired': true
         'instructionsRequired': false
 
 
-    }); //fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=5&ranking=1'
-
+    });
     $.ajax({
         url: queryURL,
         headers: { 'X-Mashape-Key': 'xsChWYIjxDmshHomTXHaaWmn7DuTp1ernr7jsnEXl2Nrg8DGIE' },
@@ -206,6 +186,7 @@ $("#submitForRecipes").on('click', function(event) {
     }).done(function(response) {
         $("#recipesGoHere").html(""); //clear out recipes div when called
         var results = response;
+
         // Looping over every result item
         for (var i = 0; i < results.length; i++) {
 
@@ -230,19 +211,19 @@ $("#submitForRecipes").on('click', function(event) {
             var uriTitle = title.replace(/\(.+?\)/g, ''); //replace parentheses with +
             uriTitle = uriTitle.replace(/[^a-z0-9+]+/gi, ' '); //replace all non  a-z 0-9 with a space
             uriTitle = encodeURIComponent(uriTitle).replace(/%20/g, '+'); //encode to uri and change encoded spaces to +
-           
+
             // Creating a paragraph tag with recipe title
             var p = $("<h6 class='individualRecipes'>").text(title);
             p.attr("data-title", uriTitle);
 
             // Creating an image tag
             image = "<a href='#pageBottom'><div class= 'dynamicImage'><img src=" + image + " class='individualRecipes' data-title=" + uriTitle + "> <p class='hoverText'>Click to find a helpful cooking tutorial</p></div></a>";
-           
+
             // append the paragraph and image we created to the "recipeDiv" div we created
             recipeDiv.append(p);
             recipeDiv.append(saveButton);
             recipeDiv.append(image);
-            
+
             // prepend the recipeDiv to the "#recipesGoHere" div in the HTML
             $("#recipesGoHere").prepend(recipeDiv);
 
@@ -258,7 +239,6 @@ $("#submitForRecipes").on('click', function(event) {
 
                 }, function() {
                     $(this).stop().animate({ opacity: 1 }, 500)
-                    // $(this).fadeOut();
                 });
             });
 
@@ -276,6 +256,7 @@ $("#submitForRecipes").on('click', function(event) {
             });
 
         }
+
     })
 
 
@@ -330,18 +311,16 @@ $("#submitForRecipes").on('click', function(event) {
 
 
     }
-    
-    
+
+
 
 
 });
 
 
 // view profile button
-  $("#mine").on("click", function(event) {
+$("#mine").on("click", function(event) {
     event.preventDefault();
     // go to the profile
     window.location.href = '/profile';
-  });
-
-
+});

@@ -1,4 +1,3 @@
-
 // Requiring our models
 var db = require("../models");
 
@@ -12,7 +11,7 @@ module.exports = function(app) {
     if (req.query.id) {
       query.id = req.query.id;
     }
-   
+
     db.Recipe.findAll({
       where: query,
       include: [db.fridgeUser]
@@ -23,7 +22,7 @@ module.exports = function(app) {
 
   // Get rotue for retrieving a single recipe
   app.get("/api/recipes/:id", function(req, res) {
-   
+
     db.Recipe.findOne({
       where: {
         id: req.params.id
@@ -41,7 +40,7 @@ module.exports = function(app) {
     });
   });
 
-  // DELETE route for deleting posts
+  // DELETE route for deleting recipes
   app.delete("/api/recipes/:id", function(req, res) {
     db.Recipe.destroy({
       where: {

@@ -19,18 +19,18 @@ module.exports = function(app) {
     });
 
 
+    // get user by id
+    app.get("/api/users/:id", function(req, res) {
 
- app.get("/api/users/:id", function(req, res) {
-   
-    db.fridgeUser.findOne({
-      where: {
-        id: req.params.id
-      },
-      include: [db.Recipe]
-    }).then(function(dbUser) {
-      res.json(dbUser);
+        db.fridgeUser.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.Recipe]
+        }).then(function(dbUser) {
+            res.json(dbUser);
+        });
     });
-  });
 
 
 
@@ -64,7 +64,7 @@ module.exports = function(app) {
 
     // Route for getting some data about our user to be used client side
     app.get("/api/user_data", function(req, res) {
-        
+
         if (!req.user) {
             // The user is not logged in, send back an empty object
             res.json({});
@@ -111,7 +111,7 @@ module.exports = function(app) {
             });
     });
 
-    // route to delete use account 
+    // route to delete user account 
     app.delete("/api/users/:id", function(req, res) {
         db.fridgeUser.destroy({
             where: {

@@ -13,19 +13,19 @@ module.exports = function(app) {
     }
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
-  
-  
-   // takes you to the registration page
+
+
+  // takes you to the registration page
   app.get("/register", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/register.html"));
   });
-  
 
-   // takes you to the main
+
+  // takes you to the main
   app.get("/index", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
-  
+
 
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the search page

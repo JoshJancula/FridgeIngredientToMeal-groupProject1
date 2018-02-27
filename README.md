@@ -22,3 +22,4 @@ They can also clear single ingredients or all of them using the generated X butt
 ![img](/assets/images/fridge2Plate4.PNG)
 
 
+The user can create an account where they can store recipes they like that they may want to make in the future.

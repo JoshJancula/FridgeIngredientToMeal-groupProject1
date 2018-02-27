@@ -8,26 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 
 
 </head>
 
 <body>
-  
-   <header class="page-header">
+
+    <header class="page-header">
         <div class="container">
             <div class="row">
                 <div class="col m10 s12">
                     <h1 class="white-text">Fridge 2 Plate <img id="logoID" src="assets/images/fridge2plate.png" alt="logo"></h1>
-                    </div>
-                    <div class="col m2 s12">
-                        <ul>
-                            
-                    <li><a class="white-text text-lighten-4 right" href='/main' id="main">Main</a></li>
-                    <li><a class="white-text text-lighten-4 right" href='/logout' id="logout">Logout</a></li>
-                        </ul>
+                </div>
+                <div class="col m2 s12">
+                    <ul>
+
+                        <li><a class="white-text text-lighten-4 right" href='/main' id="main">Main</a></li>
+                        <li><a class="white-text text-lighten-4 right" href='/logout' id="logout">Logout</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -36,41 +36,41 @@
 
 
 
-        <!--sideNav hidden on large scrrens-->
+    <!--sideNav hidden on large scrrens-->
 
-        <ul id="slide-out" class="side-nav hide-on-large blue-grey darken-2">
-            <li><a href="/main" class="white-text" id="mainSide">Main</a></li>
-            <li><a href="/logout" class="white-text" id="logoutSide">Logout</a></li>
-        </ul>
+    <ul id="slide-out" class="side-nav hide-on-large blue-grey darken-2">
+        <li><a href="/main" class="white-text" id="mainSide">Main</a></li>
+        <li><a href="/logout" class="white-text" id="logoutSide">Logout</a></li>
+    </ul>
 
-        <!--end side nav-->
-        
+    <!--end side nav-->
+
+
+    <div class="row">
+        <div class="container col m1"></div>
+
+        <div class="container col m10">
+
+            <!--saved recipes go here-->
+            <div id="myRecipes">
+                <div id="instructions"></div>
+            </div>
 
             <div class="row">
-                <div class="container col m1"></div>
 
-                <div class="container col m10">
-                    
-                    <!--saved recipes go here-->
-                    <div id="myRecipes">
-                       <div id="instructions"></div>
-                    </div>
+                <div class="center-align">
 
-                    <div class="row">
+                    <div class="container col m6">
 
-                        <div class="center-align">
-
-                            <div class="container col m6">
-                              
-                                <!-- deleteModal trigger -->
-                                <button data-target="deleteModal" id="deleteBtn" class="btn modal-trigger">Delete My Account</button>
-                            </div>
-                        </div>
+                        <!-- deleteModal trigger -->
+                        <button data-target="deleteModal" id="deleteBtn" class="btn modal-trigger">Delete My Account</button>
                     </div>
                 </div>
-
             </div>
-                <!--videos are output and displayed down here-->
+        </div>
+
+    </div>
+    <!--videos are output and displayed down here-->
     <div class="row" id="videosGoHere">
         <div class="carousel">
 
@@ -111,7 +111,7 @@
     </script>
 
 
-
+    <a name="pageBottom"></a>
 </body>
 
 </html>

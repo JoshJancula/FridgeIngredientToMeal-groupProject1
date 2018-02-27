@@ -28,7 +28,6 @@ html {
 }
 
 #registerContainer {
-    overflow: auto;
     position: absolute;
     top: 0;
     left: 0;
@@ -45,10 +44,8 @@ body {
     flex-direction: column;
     background-image: url(http://drchristianson.com/wp-content/uploads/2015/01/Food-Fruits-and-Veggies-and-pasta-and-rice-with-cutting-board.jpg);
     background-repeat: no-repeat;
-    /*background-size: auto;*/
     background-size: cover;
 	background-position: center;
-    /*background: linear-gradient(rgba(250, 250, 250, 0.5), rgba(250, 250, 250, 0.1)), url(http://drchristianson.com/wp-content/uploads/2015/01/Food-Fruits-and-Veggies-and-pasta-and-rice-with-cutting-board.jpg);*/
 
 }
 
